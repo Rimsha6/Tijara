@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "333325833173",
+    "project_id": "tijara-c2a57",
+    "storage_bucket": "tijara-c2a57.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333325833173:android:175f042c98838f75dae35c",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTTD3FnKe4HjH95CWOtOggn9crH25vtxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333325833173:android:389d2cabcf7e357fdae35c",
+        "android_client_info": {
+          "package_name": "com.example.tijara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTTD3FnKe4HjH95CWOtOggn9crH25vtxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

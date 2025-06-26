@@ -1,0 +1,25 @@
+final List<Map<String,dynamic>> favourites=[
+  {
+    "image": "Assets/images/sofa.jpeg",
+    "title": "Stylish Sofa",
+    "price": "300 SAR",
+    "location": "Dammam",
+    "contact": "0579876543",
+    "isFavourite":true,
+  },
+  {
+    "image": "Assets/images/yamaha.jpeg",
+    "title": "Yamaha R3",
+    "price": "12,000 SAR",
+    "location": "Riyad",
+    "contact" :"033145679567",
+    "isFavourite":true,
+  },
+  {"image": "Assets/images/toyota_camry.jpeg",
+    "title": "Toyota Camry",
+    "price": "25,000 SAR",
+    "location": "Jeddah",
+    "contact": "0567654321",
+    "isFavourite":false,
+  },
+];
