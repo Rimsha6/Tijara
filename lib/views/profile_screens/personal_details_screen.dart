@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
 
 class PersonalDetailsScreen extends StatelessWidget {
   @override
@@ -14,11 +15,13 @@ class PersonalDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: lightGrey,
       appBar: AppBar(
-        leading: BackButton(color: white),
+        leading: BackButton(color: white,onPressed: (){
+          Get.back();
+        },),
         backgroundColor: green,
         title: const Text(
           "Personal Details",
-          style: TextStyle(fontFamily: medium, color: white),
+          style: TextStyle(fontFamily: medium, fontSize:18,color: white),
         ),
         centerTitle: true,
       ),
@@ -78,7 +81,7 @@ class PersonalDetailsScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 12),
-                      "Muhammad".text.fontFamily(bold).size(22).make(),
+                      "Muhammad".text.fontFamily(bold).size(17).make(),
                       "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
                     ],
                   ),
@@ -120,10 +123,10 @@ class PersonalDetailsScreen extends StatelessWidget {
             width: screenWidth * 0.25,
             child: Text(
               label,
-              style: TextStyle(fontFamily: medium, fontSize: 16, color: green),
+              style: TextStyle(fontFamily: medium, fontSize: 15, color: green),
             ),
           ),
-          SizedBox(width: 10),
+          SizedBox(width: 7),
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),

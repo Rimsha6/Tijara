@@ -3,9 +3,9 @@ import 'package:tijara/widgets_common/bottom_nav_bar.dart';
 import 'package:tijara/widgets_common/chat_tile.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
-import '../../data/chat_model_data.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
+import '../../core/data/chat_model_data.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       backgroundColor: lightGrey,
-appBar: AppBar(title: "Chat Screen".text.color(white).fontFamily(medium).size(20).make(),
+appBar: AppBar(title: "Chats".text.color(white).fontFamily(medium).size(18).make(),
 centerTitle: true,
 backgroundColor: green,
 ),

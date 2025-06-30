@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter/material.dart';
 

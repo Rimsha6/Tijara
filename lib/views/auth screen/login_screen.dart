@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
-import 'package:tijara/views/forgot_password_screen.dart';
-import 'package:tijara/views/sign_up_screen.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
+import 'package:tijara/views/auth%20screen/forgot_password_screen.dart';
+import 'package:tijara/views/home%20screens/home_screen.dart';
+import 'package:tijara/views/auth%20screen/sign_up_screen.dart';
 import 'package:tijara/widgets_common/custom_button.dart';
 import 'package:tijara/widgets_common/customt_textfield.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                  ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(screenHeight * 0.03,screenHeight * 0.02,screenHeight * 0.03,screenHeight * 0.03),
-                  child: Text("Welcome to Tijara",style: TextStyle(fontSize: screenHeight * 0.03,fontFamily: bold,fontWeight: FontWeight.w600),),
+                  child: Text("Welcome to Tijara",style: TextStyle(fontSize: screenHeight * 0.022,fontFamily: bold,fontWeight: FontWeight.w600),),
                 ),
                  Padding(
                    padding:  EdgeInsets.fromLTRB(screenHeight * 0.03,0,screenHeight * 0.03,0),
@@ -44,13 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   textColor: white,width: screenWidth * 0.86 ,
                   height: screenHeight * 0.049,
                   onPressed: (){
+                  Get.to(HomeScreen());
                   },),
                 Padding(
                   padding:  EdgeInsets.fromLTRB(0,screenHeight * 0.018,screenWidth * 0.07,screenHeight * 0.03),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      "Forgot Password?".text.color(green).size(14.5).fontFamily(medium).make().onTap((){
+                      "Forgot Password?".text.color(green).size(14).fontFamily(medium).make().onTap((){
                         Get.to(ForgotPasswordScreen());
                       }),
                     ],
@@ -60,8 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
                Padding(
                  padding:  EdgeInsets.fromLTRB(0, screenHeight * 0.015 , 0, screenHeight * 0.04),
                  child: HStack([
-                  "Don't have an account? ".text.fontFamily(medium).size(14.5).make(),
-                   " Sign Up ".text.color(green).size(17.5).fontFamily(bold).make().onTap((){
+                  "Don't have an account? ".text.fontFamily(medium).size(14).make(),
+                   " Sign Up ".text.color(green).size(17).fontFamily(bold).make().onTap((){
                      Get.to(SignUpScreen());
                    }),
                  ]),

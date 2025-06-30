@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:get/get.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:tijara/models/my_ad.dart';
 import 'package:tijara/widgets_common/My_ad_tile.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -26,11 +27,12 @@ class MyAdsScreen extends StatelessWidget{
    return Scaffold(
      backgroundColor: lightGrey,
 appBar: AppBar(
-  title: "My Ads".text.fontFamily(medium).color(white).make(),
+  title: "My Ads".text.fontFamily(medium).color(white).size(18).make(),
   backgroundColor: green,
   centerTitle: true,
   leading: BackButton(color: white,
   onPressed: (){
+    Get.back();
   },),
 ),
      body: Padding(padding: EdgeInsets.symmetric(horizontal: 8,vertical: 10),

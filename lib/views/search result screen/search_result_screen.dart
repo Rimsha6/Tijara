@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
-import 'package:tijara/data/sample_ads.dart';
-import 'package:tijara/data/sample_ads_1.dart';
-import 'package:tijara/data/sample_of_search_result_ads.dart';
-import 'package:tijara/views/login_screen.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
+import 'package:tijara/core/data/sample_ads.dart';
+import 'package:tijara/core/data/sample_ads_1.dart';
+import 'package:tijara/core/data/sample_of_search_result_ads.dart';
+import 'package:tijara/views/auth%20screen/login_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../models/ad.dart';
-import '../widgets_common/customt_textfield.dart';
-import '../widgets_common/each_ad_tile.dart';
-import '../widgets_common/location_dropdown.dart';
+import '../../models/ad.dart';
+import '../../widgets_common/customt_textfield.dart';
+import '../../widgets_common/each_ad_tile.dart';
+import '../../widgets_common/location_dropdown.dart';
 
 class SearchResultScreen extends StatefulWidget {
   @override

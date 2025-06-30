@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
+import 'package:tijara/core/consts/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../consts/styles.dart';
+import '../core/consts/styles.dart';
 
 class LocationDropdown extends StatefulWidget {
   final Color backgroundColor;
@@ -41,7 +41,7 @@ class _LocationDropdownState extends State<LocationDropdown> {
                   children: [
                     Icon(Icons.location_on_outlined, color: Colors.green),
                     SizedBox(width: 8),
-                    "Select Location".text.fontFamily(medium).color(widget.hintTextColor).make(),
+                    "Select Location".text.fontFamily(medium).color(widget.hintTextColor).size(14).make(),
                   ],
                 ),
                 isExpanded: true,
@@ -49,7 +49,7 @@ class _LocationDropdownState extends State<LocationDropdown> {
                 items: ksaLocations.map((location) {
                   return DropdownMenuItem<String>(
                     value: location,
-                    child: location.text.fontFamily(medium).make(),
+                    child: location.text.fontFamily(medium).size(15).make(),
                   );
                 }).toList(),
                 onChanged: (value) {

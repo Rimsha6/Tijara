@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:get/get.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../../widgets_common/custom_button.dart';
-import '../../widgets_common/customt_textfield.dart';
+import '../../../widgets_common/custom_button.dart';
+import '../../../widgets_common/customt_textfield.dart';
 
 class ChangePhoneNoScreen  extends StatelessWidget{
   @override
@@ -20,7 +20,7 @@ class ChangePhoneNoScreen  extends StatelessWidget{
        leading: BackButton(
          color: white,
        ),
-       title: "Change Phone Number".text.fontFamily(medium).size(20).color(white).make(),
+       title: "Change Phone Number".text.fontFamily(medium).size(18).color(white).make(),
      ),
      body: SingleChildScrollView(
        physics: BouncingScrollPhysics(),
@@ -78,7 +78,7 @@ class ChangePhoneNoScreen  extends StatelessWidget{
                            ],
                          ),
                          SizedBox(height: 12),
-                         "Muhammad".text.fontFamily(bold).size(22).make(),
+                         "Muhammad".text.fontFamily(bold).size(17).make(),
                          "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
                        ],
                      ),
@@ -88,7 +88,7 @@ class ChangePhoneNoScreen  extends StatelessWidget{
 
              Padding(
                padding: const EdgeInsets.only(top: 40,bottom: 40),
-               child: "Enter your new Phone Number".text.fontFamily(bold).size(18).make(),
+               child: "Enter your new Phone Number".text.fontFamily(bold).size(16).make(),
              ),
              customTextField(title: "New Phone Number",hint: "03324567890",icon: Icons.edit,iconOnRight: true,color: Colors.grey.shade300),
              SizedBox(height: 14),
@@ -96,7 +96,9 @@ class ChangePhoneNoScreen  extends StatelessWidget{
                textColor: white,
                width: screenWidth * 0.875 ,
                height: screenHeight * 0.049,
-               onPressed: (){},),
+               onPressed: (){
+               Get.back();
+               },),
            ],
          ),),
      ),

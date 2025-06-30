@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tijara/views/home%20screens/home_screen.dart';
 import 'package:tijara/widgets_common/upload_picture_widget.dart';
 import 'package:tijara/widgets_common/bottom_nav_bar.dart';
 import 'package:tijara/widgets_common/categories_dropdown.dart';
@@ -9,8 +11,8 @@ import 'package:tijara/widgets_common/customt_textfield.dart';
 import 'package:tijara/widgets_common/location_dropdown.dart';
 import 'package:tijara/widgets_common/terms_and_conditions_checkbox.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
 
 class PostAdScreen extends StatelessWidget{
 
@@ -21,9 +23,12 @@ class PostAdScreen extends StatelessWidget{
    return Scaffold(
      backgroundColor: lightGrey,
      appBar: AppBar(
-       title: "Post Ad".text.fontFamily(medium).color(white).size(20).make(),
+       title: "Post Ad".text.fontFamily(medium).color(white).size(18).make(),
        backgroundColor: green,
        centerTitle: true,
+       leading: BackButton(color: white,onPressed: (){
+         Get.to(HomeScreen());
+       },),
      ),
      body: SingleChildScrollView(
        child: Padding(padding: EdgeInsets.symmetric(vertical: 14,horizontal: 14),
@@ -34,7 +39,7 @@ class PostAdScreen extends StatelessWidget{
          child: Column(
            children: [
              10.heightBox,
-             "List Your Ad".text.fontFamily(bold).color(black).center.size(20).make(),
+             "List Your Ad".text.fontFamily(bold).color(black).center.size(18).make(),
              15.heightBox,
              customTextField(title: "Product Name",color: lightGrey,iconOnRight: true, icon: Icons.edit),
              4.heightBox,
@@ -103,6 +108,7 @@ class PostAdScreen extends StatelessWidget{
                textColor: white,
                width: screenWidth ,
                height: screenHeight * 0.05, onPressed: () {
+               Get.to(HomeScreen());
                },),
 
            ],

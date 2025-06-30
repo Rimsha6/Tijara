@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../consts/colors.dart';
-import '../consts/styles.dart';
+import '../core/consts/colors.dart';
+import '../core/consts/styles.dart';
 
 class ProfileTile extends StatelessWidget {
   final IconData icon;
@@ -28,7 +28,7 @@ class ProfileTile extends StatelessWidget {
       child: ListTile(
         tileColor: white,
         leading: Icon(icon, color: iconColor),
-        title: Text(title, style: TextStyle(fontFamily: medium, fontSize: 16, color: textColor)),
+        title: Text(title, style: TextStyle(fontFamily: medium, fontSize: 15, color: textColor)),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
         onTap: onTap,
       ),

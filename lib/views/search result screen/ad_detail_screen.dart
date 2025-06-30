@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:tijara/widgets_common/custom_button.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../models/ad.dart';

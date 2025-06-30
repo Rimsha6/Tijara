@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/data/chat_model_data.dart';
+import 'package:get/get.dart';
+import 'package:tijara/core/data/chat_model_data.dart';
+import 'package:tijara/views/chat%20screens/chat_detail_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:intl/intl.dart';
-import '../consts/colors.dart';
-import '../consts/styles.dart';
+import '../core/consts/colors.dart';
+import '../core/consts/styles.dart';
 
 class ChatTile extends StatelessWidget {
   final ChatModel chat;
@@ -14,8 +16,10 @@ class ChatTile extends StatelessWidget {
     final formattedDate = DateFormat('MMM dd').format(chat.sendDate); // e.g., May 13
     final formattedTime = DateFormat('hh:mm a').format(chat.sendTime); // e.g., 02:30 PM
 
-    return InkWell(
-      onTap: chat.onTap,
+    return GestureDetector(
+      onTap: (){
+        Get.to(ChatDetailScreen());
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
         decoration: BoxDecoration(
@@ -86,7 +90,6 @@ class ChatTile extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 }

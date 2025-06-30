@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tijara/consts/colors.dart';
+import 'package:get/get.dart';
+import 'package:tijara/core/consts/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:tijara/models/ad.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../consts/styles.dart';
+import '../core/consts/styles.dart';
+import '../views/search result screen/ad_detail_screen.dart';
 //widget to display ads in a list when we search from or click on a category
 class EachAdTile extends StatelessWidget {
   final AdModel ad;
-
   const EachAdTile({
     required this.ad,
     Key? key,
@@ -19,7 +19,6 @@ class EachAdTile extends StatelessWidget {
     bool isFav = ad.isFavorite == true;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
     return Stack(
       children: [
         Container(

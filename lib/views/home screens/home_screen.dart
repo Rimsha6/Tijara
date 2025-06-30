@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/data/sample_ads_1.dart';
-import 'package:tijara/views/home%20screens/notification_screen.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/data/sample_ads_1.dart';
+import 'package:tijara/views/notification%20screen/notification_screen.dart';
 import 'package:tijara/widgets_common/bottom_nav_bar.dart';
 import 'package:tijara/widgets_common/categories_types_box.dart';
 import 'package:tijara/widgets_common/customt_textfield.dart';
@@ -11,8 +11,8 @@ import 'package:tijara/widgets_common/each_category.dart';
 import 'package:tijara/widgets_common/home_drawer.dart';
 import 'package:tijara/widgets_common/location_dropdown.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/styles.dart' show bold, medium;
-import '../../data/sample_ads.dart';
+import '../../core/consts/styles.dart' show bold, medium;
+import '../../core/data/sample_ads.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -52,20 +52,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Positioned(
                   top: screenHeight * 0.069,
-                  left: screenWidth * 0.35,
+                  left: screenWidth * 0.37,
                   child:
                   Row(children: [
-                    "English".text.color(white).fontFamily(medium).size(18).make().onTap((){}),
-                    " / ".text.color(white).fontFamily(medium).size(18).make(),
-                    "العربية".text.color(white).fontFamily(medium).size(18).make().onTap((){}),
+                    "English".text.color(white).fontFamily(medium).size(15).make().onTap((){}),
+                    " / ".text.color(white).fontFamily(medium).size(15).make(),
+                    "العربية".text.color(white).fontFamily(medium).size(15).make().onTap((){}),
                   ],),
                 ),
                 Positioned(
                   top: screenHeight * 0.056,
-                  left: screenWidth * 0.84,
+                  left: screenWidth * 0.85,
                   child: IconButton(onPressed: (){
                     Get.to(NotificationsScreen());
-                  }, icon: Image.asset("Assets/logos/notificationi.png",color: Colors.amberAccent,)),
+                  }, icon: Image.asset(width: 35,height: 35,"Assets/logos/notificationi.png",color: Colors.amberAccent,)),
                 ),
                 Positioned(
                   top: 150,
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.all(12),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: "Categories".text.fontFamily(bold).size(24).make(),
+                child: "Categories".text.fontFamily(bold).size(17).make(),
               ),
             ),
            CategoriesBox(),
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(currentIndex: 1),
+      bottomNavigationBar: BottomNavBar(currentIndex: 0),
     );
   }
 }

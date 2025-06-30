@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/colors.dart' show green, lightGrey, white;
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart' show green, lightGrey, white;
+import '../../core/consts/styles.dart';
 
 class ContactUsScreen extends StatefulWidget{
   const ContactUsScreen({super.key});
@@ -20,11 +21,13 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       backgroundColor: lightGrey,
       appBar: AppBar(
         backgroundColor: green,
-        leading: IconButton(onPressed: (){}, icon:Icon(Icons.arrow_back_rounded),color: white,),
-        centerTitle: true,title: "Contact Us".text.color(white).fontFamily(bold).size(20).make(),),
+        leading: IconButton(onPressed: (){
+          Get.back();
+        }, icon:Icon(Icons.arrow_back_rounded),color: white,),
+        centerTitle: true,title: "Contact Us".text.color(white).fontFamily(medium).size(18).make(),),
       body: Column(
         children: [
-          (screenHeight * 0.06).heightBox,
+          (screenHeight * 0.04).heightBox,
           Flexible(
             child: Container(
               color: white,
@@ -33,7 +36,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 title:
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: "Contact us through phone.\nDiscuss any problem regarding Tijara with us.".text.fontFamily(medium).size(15).make(),
+                      child: "Contact us through phone.\nDiscuss any problem regarding Tijara with us.".text.fontFamily(medium).size(14).make(),
                     ),
                 onTap: () {
                 },
@@ -49,7 +52,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 title:
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: "Contact us through Email.\nAsk our customer service experts anything.".text.fontFamily(medium).size(15).make(),
+                      child: "Contact us through Email.\nAsk our customer service experts anything.".text.fontFamily(medium).size(14).make(),
                     ),
                 onTap: () {
                 },
@@ -65,7 +68,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 title:
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: "Contact us through SMS.\nAsk our customer service experts anything.".text.fontFamily(medium).size(15).make(),
+                  child: "Contact us through SMS.\nAsk our customer service experts anything.".text.fontFamily(medium).size(14).make(),
                 ),
                 onTap: () {
                 },

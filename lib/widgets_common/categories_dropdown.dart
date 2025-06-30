@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
+import 'package:tijara/core/consts/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../consts/styles.dart';
+import '../core/consts/styles.dart';
 class CategoriesDropdown extends StatefulWidget{
   @override
   State<CategoriesDropdown> createState() => _CategoriesDropdownState();
@@ -52,7 +52,7 @@ class _CategoriesDropdownState extends State<CategoriesDropdown> {
             items: Categories.map((category){
               return DropdownMenuItem<String>(
                 value: category,
-                child: category.text.fontFamily(medium).make(),
+                child: category.text.fontFamily(medium).size(15).make(),
               );
             }
             ).toList(),

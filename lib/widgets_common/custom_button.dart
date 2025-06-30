@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 Widget customButton ({String? title,onPressed,textColor,color, required double width, required double height}){
@@ -16,7 +16,7 @@ Widget customButton ({String? title,onPressed,textColor,color, required double w
     padding: EdgeInsets.symmetric(horizontal: 12,vertical: 8),
     ),
       onPressed: onPressed,
-      child: title!.text.fontFamily(medium).size(17).color(textColor).make(),
+      child: title!.text.fontFamily(medium).size(15).color(textColor).make(),
     ),
   );
 }

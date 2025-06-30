@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tijara/views/login_screen.dart';
+import 'package:tijara/views/auth%20screen/login_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../consts/colors.dart';
-import '../consts/styles.dart' ;
-import '../widgets_common/custom_button.dart';
-import '../widgets_common/customt_textfield.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart' ;
+import '../../widgets_common/custom_button.dart';
+import '../../widgets_common/customt_textfield.dart';
 
 class SignUpScreen extends StatefulWidget{
   @override
@@ -38,7 +38,7 @@ children: [
         top: 40, // adjust for safe area
         left: 16,
         child: IconButton(
-          icon: Icon(Icons.arrow_back_rounded, color: Colors.white,size: 33),
+          icon: Icon(Icons.arrow_back_rounded, color: Colors.white,size: 28),
           onPressed: () {
            Get.to(LoginScreen());
           },
@@ -48,7 +48,7 @@ children: [
   ),
   Padding(
     padding: EdgeInsets.fromLTRB(screenWidth * 0.06,screenHeight * 0.00,screenWidth * 0.06,screenHeight * 0.01),
-    child: Text("Create Your Account ",style: TextStyle(fontSize: screenHeight * 0.024,fontFamily: bold,fontWeight: FontWeight.w600),),
+    child: Text("Create Your Account ",style: TextStyle(fontSize: screenHeight * 0.020,fontFamily: bold,fontWeight: FontWeight.w600),),
   ),
   Padding(
     padding:  EdgeInsets.fromLTRB(screenWidth * 0.06,0,screenWidth * 0.06,0),
@@ -85,7 +85,7 @@ children: [
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(4,0,4,0),
-        child: "Or Sign Up using".text.fontFamily(medium).size(16).make(),
+        child: "Or Sign Up using".text.fontFamily(medium).size(14).make(),
       ),
       Expanded(
         child: Divider(
@@ -95,13 +95,13 @@ children: [
       ),
     ]),
   ),
-  (screenHeight * 0.02).heightBox,
+  (screenHeight * 0.03).heightBox,
   HStack([
-    Image.asset("Assets/logos/google_logo.png",width: 80,height: 80,).flexible(),
+    Image.asset("Assets/logos/google_logo.png",width: 60,height: 60,).flexible(),
     (screenWidth * 0.07).widthBox,
-    Image.asset("Assets/logos/gmail_logo.png",width: 80,height: 80,).flexible(),
+    Image.asset("Assets/logos/gmail_logo.png",width: 60,height: 60,).flexible(),
     (screenWidth * 0.07).widthBox,
-    Image.asset("Assets/logos/fb_logo.png",width: 80,height: 80,).flexible(),
+    Image.asset("Assets/logos/fb_logo.png",width: 60,height: 60,).flexible(),
   ])
 ],
           ),

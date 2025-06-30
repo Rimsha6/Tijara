@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
-import '../../widgets_common/custom_button.dart';
-import '../../widgets_common/customt_textfield.dart';
+import '../../../core/consts/colors.dart';
+import '../../../core/consts/styles.dart';
+import '../../../widgets_common/custom_button.dart';
+import '../../../widgets_common/customt_textfield.dart';
 
 class ChangeAddressScreen extends StatefulWidget{
   @override
@@ -20,7 +21,7 @@ class _ChangeAddressScreenState extends State<ChangeAddressScreen> {
     return Scaffold(
       backgroundColor: lightGrey,
       appBar: AppBar(
-        title: "Change Address".text.fontFamily(medium).color(white).size(20).make(),
+        title: "Change Address".text.fontFamily(medium).color(white).size(18).make(),
         backgroundColor: green,
         centerTitle: true,
         leading: BackButton(color: white,),
@@ -81,7 +82,7 @@ class _ChangeAddressScreenState extends State<ChangeAddressScreen> {
                             ],
                           ),
                           SizedBox(height: 12),
-                          "Muhammad".text.fontFamily(bold).size(22).make(),
+                          "Muhammad".text.fontFamily(bold).size(17).make(),
                           "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
                         ],
                       ),
@@ -91,7 +92,7 @@ class _ChangeAddressScreenState extends State<ChangeAddressScreen> {
 
               Padding(
                 padding: const EdgeInsets.only(top: 40,bottom: 40),
-                child: "Enter your new address".text.fontFamily(bold).size(18).make(),
+                child: "Enter your new address".text.fontFamily(bold).size(16).make(),
               ),
               customTextField(title: "New Address",hint: "Hs no. 24, Al manshiya , Alula",icon: Icons.edit,iconOnRight: true,color: Colors.grey.shade300),
               SizedBox(height: 14),
@@ -99,7 +100,9 @@ class _ChangeAddressScreenState extends State<ChangeAddressScreen> {
                 textColor: white,
                 width: screenWidth * 0.875 ,
                 height: screenHeight * 0.049,
-                onPressed: (){},),
+                onPressed: (){
+                Get.back();
+                },),
             ],
           ),),
       ),

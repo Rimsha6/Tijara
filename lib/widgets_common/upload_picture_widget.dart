@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../consts/colors.dart';
-import '../consts/styles.dart';
+import '../core/consts/colors.dart';
+import '../core/consts/styles.dart';
 
 class UploadPicture extends StatefulWidget {
   @override

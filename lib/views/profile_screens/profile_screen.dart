@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_address_screen.dart';
+import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_phone_number_screen.dart';
+import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_username_screen.dart';
+import 'package:tijara/views/profile_screens/personal_details_screen.dart';
+import 'package:tijara/views/auth%20screen/reset_password_screen.dart';
 import 'package:tijara/widgets_common/bottom_nav_bar.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
 import '../../widgets_common/profile_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -18,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: lightGrey,
       appBar: AppBar(
         backgroundColor: green,
-        title: const Text("Profile", style: TextStyle(fontFamily: medium, color: white)),
+        title: const Text("Profile", style: TextStyle(fontFamily: medium, color: white,fontSize: 18)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -75,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 12),
-                      "Muhammad".text.fontFamily(bold).size(22).make(),
+                      "Muhammad".text.fontFamily(bold).size(17).make(),
                       "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
                     ],
                   ),
@@ -88,6 +94,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.person,
               title: "Personal Details",
               onTap: () {
+                Get.to(PersonalDetailsScreen());
               },
               iconColor: black,
               textColor: darkFontGrey,
@@ -96,6 +103,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.edit,
               title: "Change Username",
               onTap: () {
+                Get.to(ChangeUsernameScreen());
               },
               iconColor: black,
               textColor: darkFontGrey,
@@ -104,6 +112,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.lock,
               title: "Change Password",
               onTap: () {
+                Get.to(ResetPasswordScreen());
               },
               iconColor: black,
               textColor: darkFontGrey,
@@ -112,6 +121,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.location_on,
               title: "Change Address",
               onTap: () {
+                Get.to(ChangeAddressScreen());
               },
               iconColor: black,
               textColor: darkFontGrey,
@@ -120,6 +130,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.phone_android,
               title: "Change Phone Number",
               onTap: () {
+                Get.to(ChangePhoneNoScreen());
               },
               iconColor: black,
               textColor: darkFontGrey,

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/styles.dart';
+import 'package:tijara/core/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
+import '../../core/consts/colors.dart';
 
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         leading: BackButton(color: white),
         title: Text(
           "Settings",
-          style: TextStyle(fontSize: 20, color: white),
+          style: TextStyle(fontSize: 18, color: white,fontFamily: medium),
         ),
       ),
       body: Padding(
@@ -49,13 +49,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Text(
                       'Theme',
-                      style: TextStyle(fontSize: 22, color: black,fontFamily: bold),
+                      style: TextStyle(fontSize: 18, color: green,fontFamily: medium),
                     ),
                     Row(
                       children: [
                         Text(
                           'Light Mode',
-                          style: TextStyle(fontSize: 14, color: black,fontFamily: medium),
+                          style: TextStyle(fontSize: 12.5, color: black,fontFamily: medium),
                         ),
                         SizedBox(width: 6),
                         Switch.adaptive(
@@ -71,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         SizedBox(width: 6),
                         Text(
                           'Dark Mode',
-                          style: TextStyle(fontSize: 14, color: black,fontFamily: medium),
+                          style: TextStyle(fontSize: 12.5, color: black,fontFamily: medium),
                         ),
                       ],
                     ),

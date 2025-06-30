@@ -1,8 +1,14 @@
- import 'package:flutter/cupertino.dart';
+ import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/styles.dart';
-import '../consts/strings.dart';
+import 'package:get/get.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
+import 'package:tijara/views/auth%20screen/login_screen.dart';
+
+import '../../core/consts/strings.dart';
+
 
 class SplashScreen extends StatefulWidget{
   @override
@@ -10,6 +16,18 @@ class SplashScreen extends StatefulWidget{
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 5),
+            ()=>Navigator.pushReplacement(context,
+            MaterialPageRoute(builder:
+                (context) =>
+                LoginScreen(),
+            )
+        )
+    );
+  }
   @override
   Widget build(BuildContext context) {
    return Scaffold(

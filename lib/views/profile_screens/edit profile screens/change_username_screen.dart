@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tijara/widgets_common/custom_button.dart';
 import 'package:tijara/widgets_common/customt_textfield.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../../core/consts/colors.dart';
+import '../../../core/consts/styles.dart';
 
 class ChangeUsernameScreen extends StatefulWidget{
   @override
@@ -19,7 +20,7 @@ class _ChangeUsernameScreenState extends State<ChangeUsernameScreen> {
    return Scaffold(
      backgroundColor: lightGrey,
      appBar: AppBar(
-       title: "Change Username".text.fontFamily(medium).color(white).size(20).make(),
+       title: "Change Username".text.fontFamily(medium).color(white).size(18).make(),
        backgroundColor: green,
        centerTitle: true,
        leading: BackButton(color: white,),
@@ -78,7 +79,7 @@ class _ChangeUsernameScreenState extends State<ChangeUsernameScreen> {
                          ],
                        ),
                        SizedBox(height: 12),
-                       "Muhammad".text.fontFamily(bold).size(22).make(),
+                       "Muhammad".text.fontFamily(bold).size(17).make(),
                        "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
                      ],
                    ),
@@ -87,8 +88,8 @@ class _ChangeUsernameScreenState extends State<ChangeUsernameScreen> {
            ),
 
            Padding(
-             padding: const EdgeInsets.only(top: 40,bottom: 40),
-             child: "Enter your new username".text.fontFamily(bold).size(18).make(),
+             padding: const EdgeInsets.only(top: 40,bottom: 30),
+             child: "Enter your new username".text.fontFamily(bold).size(16).make(),
            ),
            customTextField(title: "New Username",hint: "Muhammad",icon: Icons.edit,iconOnRight: true,color: Colors.grey.shade300),
            SizedBox(height: 14),
@@ -96,7 +97,9 @@ class _ChangeUsernameScreenState extends State<ChangeUsernameScreen> {
              textColor: white,
              width: screenWidth * 0.875 ,
              height: screenHeight * 0.049,
-             onPressed: (){},),
+             onPressed: (){
+             Get.back();
+             },),
          ],
      ),),
    );

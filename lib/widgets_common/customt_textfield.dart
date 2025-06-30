@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:tijara/consts/styles.dart';
-import 'package:tijara/consts/colors.dart';
+import 'package:tijara/core/consts/styles.dart';
+import 'package:tijara/core/consts/colors.dart';
 
 Widget customTextField({String? title, String? hint , controller, IconData? icon, bool iconOnRight=false,Color? color,int maxLines=1,}){
   return Column(
@@ -11,7 +11,7 @@ Widget customTextField({String? title, String? hint , controller, IconData? icon
         Text(
           title,
           style: const TextStyle(
-            fontSize: 17,
+            fontSize: 15,
             fontFamily: 'semibold',
             color: green,
           ),
@@ -29,6 +29,7 @@ Widget customTextField({String? title, String? hint , controller, IconData? icon
                 hintStyle: TextStyle(
                   fontFamily: medium,
                   color: textFieldGrey,
+                  fontSize: 14
                 ),
                 fillColor: color,
                 filled: true,

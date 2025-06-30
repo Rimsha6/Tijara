@@ -1,5 +1,6 @@
 
-import '../widgets_common/categories_types_box.dart';
+import '../../widgets_common/categories_types_box.dart';
+
 
 final List<CategoryItem> categories = [
   CategoryItem(imagePath: 'Assets/logos/vehicles_icon.png', label: 'Vehicles'),

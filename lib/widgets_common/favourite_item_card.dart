@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../consts/colors.dart';
-import '../consts/styles.dart';
+import '../core/consts/colors.dart';
+import '../core/consts/styles.dart';
 
 class FavouriteItemCard extends StatelessWidget {
   final Map<String, dynamic> item;

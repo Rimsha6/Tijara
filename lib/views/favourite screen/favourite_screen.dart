@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/data/sample_favourites.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/data/sample_favourites.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/styles.dart';
 import '../../widgets_common/bottom_nav_bar.dart';
 import '../../widgets_common/favourite_item_card.dart';
 
@@ -24,7 +24,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     return Scaffold(
       backgroundColor: lightGrey,
       appBar: AppBar(
-        title: const Text("Favourites", style: TextStyle(fontFamily: medium, color: white)),
+        title: const Text("Favourites", style: TextStyle(fontFamily: medium, color: white,fontSize: 18)),
         backgroundColor: green,
         centerTitle: true,
       ),
@@ -42,7 +42,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavBar(currentIndex: 2,),
+      bottomNavigationBar: BottomNavBar(currentIndex: 1),
     );
   }
 }

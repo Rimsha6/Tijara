@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tijara/models/my_ad.dart';
 import 'package:tijara/views/drawer%20screens/my_ad_detail_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
 import '../../models/ad.dart';
 
 class Detail extends StatefulWidget{

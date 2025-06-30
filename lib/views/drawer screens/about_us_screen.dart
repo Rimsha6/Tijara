@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tijara/consts/colors.dart';
-import 'package:tijara/consts/strings.dart';
-import 'package:tijara/data/swiper.dart';
+import 'package:tijara/core/consts/colors.dart';
+import 'package:tijara/core/consts/strings.dart';
+import 'package:tijara/core/data/swiper.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/styles.dart' show bold, medium;
+import '../../core/consts/styles.dart' show bold, medium;
 
 class AboutUsScreen extends StatelessWidget{
   const AboutUsScreen({super.key});
@@ -34,7 +34,7 @@ class AboutUsScreen extends StatelessWidget{
                  child: IconButton(
                    icon: Icon(Icons.arrow_back_rounded, color: Colors.white,size: 33),
                    onPressed: () {
-                    Get.to(Drawer());
+                    Get.back();
                    },
                  ),
                ),
@@ -42,7 +42,7 @@ class AboutUsScreen extends StatelessWidget{
            ),
            Padding(
              padding: EdgeInsets.fromLTRB(screenHeight * 0.03,screenHeight * 0.01,screenHeight * 0.03,screenHeight * 0.01),
-             child: Text("About Us",style: TextStyle(fontSize: screenHeight * 0.03,fontFamily: bold,fontWeight: FontWeight.w600),),
+             child: Text("About Us",style: TextStyle(fontSize: screenHeight * 0.022,fontFamily: bold,fontWeight: FontWeight.w600),),
            ),
            SizedBox(height: screenHeight * 0.02),
            Container(
@@ -58,7 +58,7 @@ class AboutUsScreen extends StatelessWidget{
                  Text(
                  aboutUs,
                    style: TextStyle(
-                     fontSize: screenHeight * 0.016,
+                     fontSize: screenHeight * 0.015,
                      height: 1.5,
                      color: Colors.black87,
                      fontFamily: medium,

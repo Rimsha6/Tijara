@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tijara/widgets_common/customt_textfield.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
 
 class ChatDetailScreen extends StatefulWidget{
   @override
@@ -23,6 +23,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
       {'fromMe': false, 'text': "Hey! Just wanted to check in and see how everything's going on your end. It’s been a while since we last caught up, and I figured it would be nice to reconnect. Let me know how you've been and if you're free sometime this week to grab coffee or just chat over a call. No pressure — totally up to you! 😊"},
     ];
    return Scaffold(
+     backgroundColor: lightGrey,
      appBar: AppBar(
        elevation: 1,
        backgroundColor: green,

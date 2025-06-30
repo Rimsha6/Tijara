@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../consts/colors.dart';
-import '../../consts/styles.dart';
-import '../../data/sample_notifications_data.dart';
+import '../../core/consts/colors.dart';
+import '../../core/consts/styles.dart';
+import '../../core/data/sample_notifications_data.dart';
 
 class NotificationsScreen extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class NotificationsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: green,
         centerTitle: true,
-        title: "Notifications".text.color(white).fontFamily(medium).size(20).make(),
+        title: "Notifications".text.color(white).fontFamily(medium).size(18).make(),
         leading: BackButton(
           color: white,
         ),
