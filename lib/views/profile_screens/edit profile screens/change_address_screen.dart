@@ -5,8 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../../../core/consts/colors.dart';
 import '../../../core/consts/styles.dart';
-import '../../../widgets_common/custom_button.dart';
-import '../../../widgets_common/customt_textfield.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/customt_textfield.dart';
 
 class ChangeAddressScreen extends StatefulWidget{
   @override

@@ -1,5 +1,5 @@
 
-import '../../widgets_common/categories_types_box.dart';
+import '../../widgets/categories_types_box.dart';
 
 
 final List<CategoryItem> categories = [

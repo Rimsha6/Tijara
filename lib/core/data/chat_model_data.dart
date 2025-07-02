@@ -1,4 +1,4 @@
-import 'package:tijara/widgets_common/chat_tile.dart';
+import 'package:tijara/widgets/chat_tile.dart';
 
 final List<ChatModel> chats = [
   ChatModel(

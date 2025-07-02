@@ -1,4 +1,4 @@
- import 'package:tijara/models/ad.dart';
+import '../models/ad.dart';
 
  final List<AdModel> searchAds=[
   AdModel(

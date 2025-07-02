@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:tijara/core/consts/colors.dart';
 import 'package:tijara/core/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../../../widgets_common/custom_button.dart';
-import '../../../widgets_common/customt_textfield.dart';
+import '../../../widgets/custom_button.dart';
+import '../../../widgets/customt_textfield.dart';
 
 class ChangePhoneNoScreen  extends StatelessWidget{
   @override

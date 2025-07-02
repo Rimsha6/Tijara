@@ -1,4 +1,4 @@
-  import 'package:tijara/widgets_common/categories_types_box.dart';
+  import 'package:tijara/widgets/categories_types_box.dart';
 
 final List<CategoryItem> allCategories=[
   CategoryItem(imagePath: 'Assets/logos/vehicles_icon.png', label: 'Cars and Vans'),

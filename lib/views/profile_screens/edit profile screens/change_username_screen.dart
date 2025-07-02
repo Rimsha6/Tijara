@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tijara/widgets_common/custom_button.dart';
-import 'package:tijara/widgets_common/customt_textfield.dart';
+import 'package:tijara/widgets/custom_button.dart';
+import 'package:tijara/widgets/customt_textfield.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../../core/consts/colors.dart';
