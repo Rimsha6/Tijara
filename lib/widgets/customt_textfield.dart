@@ -13,7 +13,7 @@ Widget customTextField({
   Color? color,
   int maxLines = 1,
   Widget? suffixIcon,
-  bool obscureText = false, // 🔒 NEW PARAM
+  bool obscureText = false,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,

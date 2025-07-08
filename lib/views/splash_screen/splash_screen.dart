@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
           _loading = false;
           _error = 'No internet connection. Please check your network and pull to refresh.';
         });
-        showSnackBar('📡 No internet connection');
+        showSnackBar('No internet connection');
         return;
       }
 
@@ -149,4 +149,5 @@ class _SplashScreenState extends State<SplashScreen> {
           : const SizedBox(),
     );
   }
+
 }

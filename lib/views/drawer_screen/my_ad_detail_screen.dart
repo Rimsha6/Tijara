@@ -113,8 +113,8 @@ class _MyAdDetailScreenState extends State<MyAdDetailScreen> {
                   children: [
                     customTextField(title: "Title", color: Colors.grey.shade200, maxLines: 1, controller: titleController),
                     customTextField(title: "Price", color: Colors.grey.shade200, maxLines: 1, controller: priceController),
-                    CategoriesDropdown(),
-                    ConditionDropdown(),
+                    // CategoriesDropdown(),
+                    // ConditionDropdown(),
                     customTextField(title: "Description", color: Colors.grey.shade200, maxLines: 7, controller: descriptionController),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class _MyAdDetailScreenState extends State<MyAdDetailScreen> {
                             color: green,
                           ),),
                         const SizedBox(height: 8),
-                        LocationDropdown(backgroundColor: lightGrey,),
+                        // LocationDropdown(backgroundColor: lightGrey,),
                       ],
                     ),
                     10.heightBox,

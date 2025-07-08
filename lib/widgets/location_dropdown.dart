@@ -1,67 +1,112 @@
 import 'package:flutter/material.dart';
-import 'package:tijara/core/consts/colors.dart';
-import 'package:velocity_x/velocity_x.dart';
-import '../core/consts/styles.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geocoding/geocoding.dart';
 
-class LocationDropdown extends StatefulWidget {
-  final Color backgroundColor;
-  final Color hintTextColor;
-  const LocationDropdown(
-      { Key? key,
-        this.backgroundColor= white,
-        this.hintTextColor= grey,
-      }): super (key:key);
+class MapPickerScreen extends StatefulWidget {
+  const MapPickerScreen({super.key});
+
   @override
-  _LocationDropdownState createState() => _LocationDropdownState();
+  State<MapPickerScreen> createState() => _MapPickerScreenState();
 }
-class _LocationDropdownState extends State<LocationDropdown> {
-  String? selectedLocation;
-  final List<String> ksaLocations = [
-    'Riyadh', 'Jeddah', 'Mecca', 'Medina', 'Dammam', 'Khobar', 'Tabuk',
-    'Abha', 'Hail', 'Buraydah', 'Najran', 'Sakaka', 'Al Bahah', 'Yanbu',
-    'Al Hofuf', 'Jazan', 'Arar', 'Al Qassim', 'Taif', 'Al Khafji'
-    // Add more if needed
-  ];
+
+class _MapPickerScreenState extends State<MapPickerScreen> {
+  LatLng? selectedLocation;
+  String selectedAddress = '';
+  GoogleMapController? mapController;
+
+  void _onMapTap(LatLng position) async {
+    setState(() {
+      selectedLocation = position;
+    });
+
+    /// Get address from lat/lng
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+      position.latitude,
+      position.longitude,
+    );
+
+    if (placemarks.isNotEmpty) {
+      Placemark place = placemarks.first;
+      setState(() {
+        selectedAddress =
+            "${place.name}, ${place.locality}, ${place.administrativeArea}";
+      });
+    }
+  }
+
+  void _confirmLocation() {
+    if (selectedLocation != null) {
+      Navigator.pop(context, {
+        'lat': selectedLocation!.latitude,
+        'lng': selectedLocation!.longitude,
+        'address':
+            selectedAddress.isNotEmpty ? selectedAddress : "Selected Location",
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Please tap on the map to select a location.")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: widget.backgroundColor,
-              border: Border.all(color: Colors.grey.shade300),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Pick Location"),
+        backgroundColor: Colors.green,
+      ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            onMapCreated: (controller) => mapController = controller,
+            initialCameraPosition: const CameraPosition(
+              target: LatLng(33.6844, 73.0479), // Pakistan center
+              zoom: 12,
             ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: selectedLocation,
-                hint: Row(
-                  children: [
-                    Icon(Icons.location_on_outlined, color: Colors.green),
-                    SizedBox(width: 8),
-                    "Select Location".text.fontFamily(medium).color(widget.hintTextColor).size(14).make(),
-                  ],
+            onTap: _onMapTap,
+            markers: selectedLocation != null
+                ? {
+                    Marker(
+                      markerId: const MarkerId('selected'),
+                      position: selectedLocation!,
+                    )
+                  }
+                : {},
+          ),
+          if (selectedAddress.isNotEmpty)
+            Positioned(
+              top: 10,
+              left: 10,
+              right: 10,
+              child: Card(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    selectedAddress,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
-                isExpanded: true,
-                icon: Icon(Icons.arrow_drop_down),
-                items: ksaLocations.map((location) {
-                  return DropdownMenuItem<String>(
-                    value: location,
-                    child: location.text.fontFamily(medium).size(15).make(),
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    selectedLocation = value;
-                  });
-                },
               ),
             ),
+        ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ElevatedButton(
+          onPressed: _confirmLocation,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            padding: const EdgeInsets.symmetric(vertical: 14),
+          ),
+          child: const Text(
+            "Confirm Location",
+            style: TextStyle(fontSize: 16, color: Colors.white),
           ),
         ),
-      ],
+      ),
     );
   }
 }

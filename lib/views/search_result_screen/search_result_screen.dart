@@ -54,7 +54,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 right: 20,
                 child: Row(
                   children: [
-                    Expanded(child: LocationDropdown()),
+                    // Expanded(child: LocationDropdown()),
                     const SizedBox(width: 10),
                     ElevatedButton.icon(
                       onPressed: () {},

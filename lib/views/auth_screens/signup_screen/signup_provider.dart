@@ -29,7 +29,7 @@ class SignUpProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Sign up user
+  /// Sign up user >>>>>>>>>>>>>>>>>
   Future<void> signUpUser(BuildContext context) async {
     print("User Name: ${appUser.userName}");
     print("User Email: ${appUser.userEmail}");

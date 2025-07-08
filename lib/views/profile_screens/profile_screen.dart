@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_address_screen.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_phone_number_screen.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_username_screen.dart';

@@ -1,25 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../core/consts/colors.dart';
 import '../core/consts/styles.dart';
 
-class UploadPicture extends StatefulWidget {
-  @override
-  State<UploadPicture> createState() => _UploadPictureState();
-}
+class UploadPicture extends StatelessWidget {
+  final File? imageFile;
 
-class _UploadPictureState extends State<UploadPicture> {
-  // You can use any image picking logic here
-  List<ImageProvider> uploadedImages = [];
-
-  void pickImage() async {
-    // TODO: Replace with real image picker logic
-    setState(() {
-      uploadedImages.add(AssetImage('Assets/images/sofa.jpeg')); // placeholder
-    });
-  }
+  const UploadPicture({super.key, required this.imageFile});
 
   @override
   Widget build(BuildContext context) {
@@ -45,38 +33,22 @@ class _UploadPictureState extends State<UploadPicture> {
             borderRadius: BorderRadius.circular(8),
           ),
           width: screenWidth,
-          child: GridView.builder(
-            shrinkWrap: true,
-            itemCount: uploadedImages.length + 1,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
+          height: 150,
+          child: imageFile == null
+              ? Center(
+            child: Icon(
+              Icons.image,
+              color: Colors.grey.shade600,
+              size: 40,
             ),
-            itemBuilder: (context, index) {
-              if (index == uploadedImages.length) {
-                // Add Button
-                return GestureDetector(
-                  onTap: pickImage,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: green),
-                    ),
-                    child: Icon(Icons.add_a_photo, color: green),
-                  ),
-                );
-              } else {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image(
-                    image: uploadedImages[index],
-                    fit: BoxFit.cover,
-                  ),
-                );
-              }
-            },
+          )
+              : ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.file(
+              imageFile!,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
         ),
       ],

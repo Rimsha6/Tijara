@@ -11,11 +11,12 @@ import '../../../widgets/custom_button.dart';
 import '../../../widgets/customt_textfield.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
-
 class _SignUpScreenState extends State<SignUpScreen> {
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -82,6 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             CustomTextField(
                               hintText: 'Full Name',
                               preFixIcon: Icon(Icons.person_outlined),
+                              textInputAction: TextInputAction.next,
                               onChanged: (value) {
                                 model.appUser.userName = value;
                               },
@@ -97,6 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             CustomTextField(
                               hintText: 'Email',
                               preFixIcon: Icon(Icons.email_outlined),
+                              textInputAction: TextInputAction.next,
                               onChanged: (value) {
                                 model.appUser.userEmail = value;
                               },
@@ -117,6 +120,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             CustomTextField(
                               hintText: 'Password',
                               obscureText: model.isVisiblePassword,
+                              textInputAction: TextInputAction.next,
+
                               preFixIcon: const Icon(Icons.lock_open),
                               onChanged: (value) {
                                 model.appUser.password = value;
@@ -150,6 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             CustomTextField(
                               hintText: 'Confirm Password',
                               obscureText: model.isVisiblePassword,
+                              textInputAction: TextInputAction.done,
                               preFixIcon: const Icon(Icons.lock_open),
                               onChanged: (value) {
                                 model.confirmPassword = value;

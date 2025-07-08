@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../core/consts/colors.dart';
 import 'package:get/get.dart';
-
 import '../views/chat_screen/chat_screen.dart';
 import '../views/favourite_screen/favourite_screen.dart';
 import '../views/home_screen/home_screen.dart';
+import '../views/post_ad_Screen/post_ad_screen.dart';
 import '../views/profile_screens/profile_screen.dart';
-import '../views/sell_screen/post_ad_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
