@@ -8,16 +8,16 @@ class HomeProvider extends ChangeNotifier {
     fetchAds();
   }
   final List<String> categories = [
-    "Cars and Vans",
+    "Vehicles",
     "Bikes",
-    "Mobiles and Tablets",
+    "Mobiles",
     "Fashion",
-    "Electronics and Appliances",
-    "Pets and Animals",
+    "Electronics",
+    "Animals",
     "Home Decor",
     "Books",
     "Sports",
-    "Kids and Babies",
+    "Kids",
     "Furniture",
     "Hobbies",
     "Industrial and Business",
@@ -59,6 +59,7 @@ class HomeProvider extends ChangeNotifier {
 
 
   List<Map<String, dynamic>> getAdsForCategory(String category) {
+    print(category);
     return _adsByCategory[category] ?? [];
   }
 }

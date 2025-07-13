@@ -1,3 +1,4 @@
+import '../notification_screen/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tijara/core/consts/colors.dart';
@@ -8,12 +9,10 @@ import 'package:tijara/widgets/each_category.dart';
 import 'package:tijara/widgets/home_drawer.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../core/consts/styles.dart';
-import '../notification_screen/notification_screen.dart';
 import 'home_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
@@ -42,7 +41,8 @@ class HomeScreen extends StatelessWidget {
                     left: screenWidth * 0.04,
                     child: Builder(
                       builder: (context) => IconButton(
-                        icon: const Icon(Icons.menu, color: Colors.white, size: 34),
+                        icon: const Icon(Icons.menu,
+                            color: Colors.white, size: 34),
                         onPressed: () {
                           Scaffold.of(context).openDrawer();
                         },
@@ -54,9 +54,26 @@ class HomeScreen extends StatelessWidget {
                     left: screenWidth * 0.37,
                     child: Row(
                       children: [
-                        "English".text.color(white).fontFamily(medium).size(15).make().onTap(() {}),
-                        " / ".text.color(white).fontFamily(medium).size(15).make(),
-                        "العربية".text.color(white).fontFamily(medium).size(15).make().onTap(() {}),
+                        "English"
+                            .text
+                            .color(white)
+                            .fontFamily(medium)
+                            .size(15)
+                            .make()
+                            .onTap(() {}),
+                        " / "
+                            .text
+                            .color(white)
+                            .fontFamily(medium)
+                            .size(15)
+                            .make(),
+                        "العربية"
+                            .text
+                            .color(white)
+                            .fontFamily(medium)
+                            .size(15)
+                            .make()
+                            .onTap(() {}),
                       ],
                     ),
                   ),
@@ -67,7 +84,9 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => NotificationsScreen()),
+                          MaterialPageRoute(
+                            builder: (_) => NotificationsScreen(),
+                          ),
                         );
                       },
                       icon: Image.asset(
@@ -98,25 +117,26 @@ class HomeScreen extends StatelessWidget {
                   child: "Categories".text.fontFamily(bold).size(17).make(),
                 ),
               ),
-               CategoriesBox(),
+              CategoriesBox(),
               homeProvider.isLoading
                   ? const Padding(
-                padding: EdgeInsets.all(20),
-                child: CircularProgressIndicator(),
-              )
+                      padding: EdgeInsets.all(20),
+                      child: CircularProgressIndicator(),
+                    )
                   : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  EachCategory(
-                    categoryTitle: "Mobiles and Tablets",
-                    ads: homeProvider.getAdsForCategory("Mobiles and Tablets"),
-                  ),
-                  EachCategory(
-                    categoryTitle: "Furniture",
-                    ads: homeProvider.getAdsForCategory("Furniture"),
-                  ),
-                ],
-              ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        EachCategory(
+                          categoryTitle: "Mobiles and Tablets",
+                          ads: homeProvider
+                              .getAdsForCategory('Mobiles'),
+                        ),
+                        EachCategory(
+                          categoryTitle: "Furniture",
+                          ads: homeProvider.getAdsForCategory("Furniture"),
+                        ),
+                      ],
+                 ),
             ],
           ),
         ),
@@ -124,5 +144,4 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavBar(currentIndex: 0),
     );
   }
-
 }

@@ -4,8 +4,10 @@ import 'package:tijara/core/consts/styles.dart';
 import 'package:tijara/widgets/custom_button.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../core/models/post_ad_model.dart';
+
 class AdDetailScreen extends StatelessWidget {
-  final Map<String, dynamic> ad;
+  final PostAdModel ad;
 
   const AdDetailScreen({required this.ad, Key? key}) : super(key: key);
 
@@ -14,17 +16,17 @@ class AdDetailScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    final String title = ad['productName'] ?? 'No Title';
-    final String price = ad['productPrice'] ?? 'N/A';
-    final String description = ad['description'] ?? 'No Description';
-    final String location = ad['location'] ?? 'Unknown';
-    final String category = ad['category'] ?? 'Other';
-    final int views = ad['views'] ?? 0;
-    final String contact = ad['contactNumber'] ?? 'N/A';
-    final String userName = ad['userName'] ?? 'Anonymous';
-    final String userId = ad['userId'] ?? 'N/A';
-    final String adId = ad['adId'] ?? 'N/A';
-    final String imageUrl = ad['imageUrl'] ?? '';
+    final String title = ad.productName ?? 'No Title';
+    final String price = ad.productPrice ?? 'N/A';
+    final String description = ad.description ?? 'No Description';
+    final String location = ad.location ?? 'Unknown';
+    final String category = ad.category ?? 'Other';
+    final int views = ad.views ?? 0;
+    final String contact = ad.contactNumber ?? 'N/A';
+    final String userName = ad.userName ?? 'Anonymous';
+    final String userId = ad.userId ?? 'N/A';
+    final String adId = ad.adId ?? 'N/A';
+    final String imageUrl = ad.imageUrl ?? '';
 
     return Scaffold(
       backgroundColor: lightGrey,

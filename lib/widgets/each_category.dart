@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../core/consts/styles.dart';
+import '../core/models/post_ad_model.dart';
 import '../views/search_result_screen/ad_detail_screen.dart';
 class EachCategory extends StatelessWidget {
   final String categoryTitle;
@@ -24,31 +25,29 @@ class EachCategory extends StatelessWidget {
           child:
             categoryTitle.text.fontFamily(bold).size(16.5).make(),
         ),
-
-        // Horizontally scrollable ads
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: ads.map((ad) => AdCard(ad: ad)).toList(),
+            children: ads.map((adMap) => AdCard(ad: PostAdModel.fromJson(adMap))).toList(),
           ),
         ),
       ],
     );
   }
 }
-// Reusable widget for individual ad cards
+/// Reusable widget for individual ad cards
 class AdCard extends StatelessWidget {
-  final Map<String, dynamic> ad;
+  final PostAdModel ad;
   const AdCard({required this.ad, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String image = ad["imageUrl"] ?? '';
-    final String title = ad["productName"] ?? 'No Title';
-    final String price = ad["productPrice"] ?? 'N/A';
-    final String description = ad["description"] ?? 'No description';
-    final String location = ad["location"] ?? 'Unknown';
-    final int views = ad["views"] ?? 0;
+    final String image = ad.imageUrl ?? '';
+    final String title = ad.productName ?? 'No Title';
+    final String price = ad.productPrice ?? 'N/A';
+    final String description = ad.description ?? 'No description';
+    final String location = ad.location ?? 'Unknown';
+    final int views = ad.views ?? 0;
 
     return GestureDetector(
       onTap: () {

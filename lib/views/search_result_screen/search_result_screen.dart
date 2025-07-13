@@ -1,15 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:provider/provider.dart';
 import 'package:tijara/core/consts/colors.dart';
 import 'package:tijara/core/consts/styles.dart';
 import 'package:tijara/core/data/sample_of_search_result_ads.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../../core/models/ad.dart';
+import '../../core/models/post_ad_model.dart';
 import '../../widgets/customt_textfield.dart';
 import '../../widgets/each_ad_tile.dart';
 import '../../widgets/location_dropdown.dart';
+import '../home_screen/home_provider.dart';
+import 'ad_detail_screen.dart';
 
 class SearchResultScreen extends StatefulWidget {
-  const SearchResultScreen({super.key});
+  final String category;
+  const SearchResultScreen({super.key, required this.category});
 
   @override
   State<SearchResultScreen> createState() => _SearchResultScreenState();
@@ -17,14 +25,17 @@ class SearchResultScreen extends StatefulWidget {
 class _SearchResultScreenState extends State<SearchResultScreen> {
   @override
   Widget build(BuildContext context) {
+    print(">>>>>>>>>>> ${widget.category}");
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final homeProvider = Provider.of<HomeProvider>(context);
+    final filteredAds = homeProvider.getAdsForCategory(widget.category);
 
     return Scaffold(
       backgroundColor: lightGrey,
       body: Column(
         children: [
-          // Header Section
+          // Header UI
           Stack(
             children: [
               Container(
@@ -54,7 +65,6 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 right: 20,
                 child: Row(
                   children: [
-                    // Expanded(child: LocationDropdown()),
                     const SizedBox(width: 10),
                     ElevatedButton.icon(
                       onPressed: () {},
@@ -68,7 +78,6 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             ],
           ),
 
-          // Sort and Grid View Buttons
           Padding(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
             child: Row(
@@ -90,13 +99,22 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             ),
           ),
 
-          // List Section
           Expanded(
-            child: ListView.builder(
+            child: homeProvider.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : filteredAds.isEmpty
+                ? Center(child: Text("No ads found in ${widget.category}"))
+                : ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              itemCount: searchAds.length,
+              itemCount: filteredAds.length,
               itemBuilder: (context, index) {
-                return EachAdTile(ad: searchAds[index]);
+                final adMap = filteredAds[index];
+                final ad = PostAdModel.fromJson(adMap);
+                return GestureDetector(
+                    onTap: () {
+                      Get.to(AdDetailScreen(ad: ad));
+                    },
+                    child: EachAdTile(ad: ad));
               },
             ),
           ),
@@ -105,6 +123,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
       ),
     );
   }
+
 }
 
 

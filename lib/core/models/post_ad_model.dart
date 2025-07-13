@@ -11,7 +11,7 @@ class PostAdModel {
   double? latitude;
   double? longitude;
   String? description;
-  String? views;
+  int? views;
   String? adId;
   String? imageUrl;
 

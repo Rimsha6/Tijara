@@ -18,17 +18,17 @@ class _CategoriesDropdownState extends State<CategoriesDropdown> {
   @override
   Widget build(BuildContext context) {
     final List<String> Categories = [
-      "Cars and Vans",
-      "Bikes",
-      "Mobiles and Tablets",
+      "Vehicles",
+      "Electronics",
+      "Furniture",
+      "Mobiles",
       "Fashion",
-      "Electronics and Appliances",
-      "Pets and Animals",
+      "Animals",
+      "Bikes",
       "Home Decor",
       "Books",
       "Sports",
       "Kids and Babies",
-      "Furniture",
       "Hobbies",
       "Industrial and Business",
     ];

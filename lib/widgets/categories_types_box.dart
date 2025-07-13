@@ -23,11 +23,11 @@ class CategoriesBox extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       if (category.label == "More") {
                         Get.to(() => AllCategoriesListScreen());
                       } else {
-                        Get.to(SearchResultScreen());
+                        Get.to(() => SearchResultScreen(category: category.label));
                       }
                     },
                     child: Column(
@@ -64,7 +64,6 @@ class CategoryItem {
   final String label;
   CategoryItem({required this.imagePath, required this.label});
 }
-// widget for displaying all the categories with their icons once the more button is clicked in the above class
 class AllCategories extends StatelessWidget{
   final List<CategoryItem> allCategories;
   AllCategories(
@@ -113,7 +112,7 @@ padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             title: category.label.text.fontFamily(medium).size(15).make(),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
             onTap: () {
-             Get.to(SearchResultScreen());
+             Get.to(SearchResultScreen(category: category.label));
             },
           ),
         );
