@@ -1,17 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_address_screen.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_phone_number_screen.dart';
 import 'package:tijara/views/profile_screens/edit%20profile%20screens/change_username_screen.dart';
 import 'package:tijara/views/profile_screens/personal_details_screen.dart';
+import 'package:tijara/views/profile_screens/profile_provider.dart';
 import 'package:tijara/widgets/bottom_nav_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../core/consts/colors.dart';
 import '../../core/consts/styles.dart';
-import '../../core/locator.dart';
-import '../../core/services/auth_services.dart';
 import '../../widgets/profile_tile.dart';
 import '../auth_screens/reset_password_screen.dart';
 import '../splash_screen/splash_screen.dart';
@@ -21,9 +20,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locateUser = locator<AuthServices>();
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final profileProvider = Provider.of<ProfileProvider>(context);
 
     return Scaffold(
       backgroundColor: lightGrey,
@@ -73,15 +72,13 @@ class ProfileScreen extends StatelessWidget {
                               AssetImage("Assets/images/profile_img.jpeg"),
                         ),
                         Positioned(
-                          bottom: -4, // slight offset to appear nicely
-                          right:
-                              -4, // align it slightly outside or flush to the border
+                          bottom: -4,
+                          right: -4,
                           child: Container(
                             height: 40,
                             width: 40,
                             decoration: BoxDecoration(
-                              color:
-                                  lightGrey, // background circle for visibility
+                              color: lightGrey,
                               shape: BoxShape.circle,
                             ),
                             child: GestureDetector(
@@ -95,12 +92,12 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 12),
-                    "${locateUser.appUser.userName}"
+                    "${profileProvider.locateUser.appUser.userName}"
                         .text
                         .fontFamily(bold)
                         .size(17)
                         .make(),
-                    "${locateUser.appUser.userEmail}"
+                    "${profileProvider.locateUser.appUser.userEmail}"
                         .text
                         .fontFamily(medium)
                         .color(fontGrey)
@@ -207,7 +204,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            await locateUser.logoutUser();
+                            await profileProvider.locateUser.logoutUser();
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

@@ -42,6 +42,49 @@ class DatabaseServices {
       print('Exception@UpdateUserProfile=>$e');
     }
   }
+  /// Update User Name >>
+  updateUserName(userId, userName) async {
+    try {
+      firebaseFireStore
+          .collection('AppUser')
+          .doc(userId)
+          .update({
+        'userName': userName,
+      });
+    } catch (e) {
+      print('Exception@UpdateUserProfile=>$e');
+    }
+  }
+
+  /// Update Phone Number >>
+  updatePhoneNo(userId, phoneNo) async {
+    try {
+      firebaseFireStore
+          .collection('AppUser')
+          .doc(userId)
+          .update({
+        'phoneNo': phoneNo,
+      });
+    } catch (e) {
+      print('Exception@UpdateUserProfile=>$e');
+    }
+  }
+
+  /// Update User Address  >>
+  updateAddress(userId, address) async {
+    try {
+      firebaseFireStore
+          .collection('AppUser')
+          .doc(userId)
+          .update({
+        'address': address,
+      });
+    } catch (e) {
+      print('Exception@UpdateUserProfile=>$e');
+    }
+  }
+
+
   Future<void> createAd(PostAdModel postAdModel) async {
     try {
       final docRef = await firebaseFireStore

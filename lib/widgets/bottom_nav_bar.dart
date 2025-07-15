@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../core/consts/colors.dart';
 import 'package:get/get.dart';
 import '../views/chat_screen/chat_screen.dart';
 import '../views/favourite_screen/favourite_screen.dart';
+import '../views/home_screen/home_provider.dart';
 import '../views/home_screen/home_screen.dart';
 import '../views/post_ad_Screen/post_ad_screen.dart';
 import '../views/profile_screens/profile_screen.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   final int currentIndex;
   const BottomNavBar({super.key, required this.currentIndex});
+
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      Provider.of<HomeProvider>(context, listen: false).init();
+    });
+    super.initState();
+  }
+
 
   void _onTap(int index) {
     if (index == 2) {
@@ -41,7 +57,7 @@ class BottomNavBar extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         BottomNavigationBar(
-          currentIndex: currentIndex,
+          currentIndex: widget.currentIndex,
           onTap: _onTap,
           type: BottomNavigationBarType.fixed,
           elevation: 0,

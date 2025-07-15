@@ -6,6 +6,7 @@ import 'package:tijara/core/consts/colors.dart';
 Widget customTextField({
   String? title,
   String? hint,
+  String? initialValue,
   TextEditingController? controller,
   FormFieldValidator<String>? validator,
   IconData? icon,
@@ -32,8 +33,9 @@ Widget customTextField({
       TextFormField(
         controller: controller,
         validator: validator,
-        obscureText: obscureText, // 🔒 SET HERE
+        obscureText: obscureText,
         maxLines: obscureText ? 1 : maxLines,
+        initialValue: controller == null ? initialValue : null,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(

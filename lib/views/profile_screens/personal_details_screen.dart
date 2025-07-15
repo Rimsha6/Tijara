@@ -1,27 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:tijara/views/profile_screens/profile_provider.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../../core/consts/colors.dart';
 import '../../core/consts/styles.dart';
+import '../../core/locator.dart';
+import '../../core/services/auth_services.dart';
 
 class PersonalDetailsScreen extends StatelessWidget {
+  const PersonalDetailsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final profileProvider = Provider.of<ProfileProvider>(context);
 
     return Scaffold(
       backgroundColor: lightGrey,
       appBar: AppBar(
-        leading: BackButton(color: white,onPressed: (){
-          Get.back();
-        },),
+        leading: BackButton(
+          color: white,
+          onPressed: () {
+            Get.back();
+          },
+        ),
         backgroundColor: green,
         title: const Text(
           "Personal Details",
-          style: TextStyle(fontFamily: medium, fontSize:18,color: white),
+          style: TextStyle(fontFamily: medium, fontSize: 18, color: white),
         ),
         centerTitle: true,
       ),
@@ -41,7 +48,10 @@ class PersonalDetailsScreen extends StatelessWidget {
                     border: Border.all(color: Colors.grey.shade300),
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
-                      BoxShadow(color: Colors.grey.shade200, blurRadius: 6, spreadRadius: 2),
+                      BoxShadow(
+                          color: Colors.grey.shade200,
+                          blurRadius: 6,
+                          spreadRadius: 2),
                     ],
                   ),
                   child: Image.asset(
@@ -60,7 +70,8 @@ class PersonalDetailsScreen extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 50,
-                            backgroundImage: AssetImage("Assets/images/profile_img.jpeg"),
+                            backgroundImage:
+                                AssetImage("Assets/images/profile_img.jpeg"),
                           ),
                           Positioned(
                             bottom: -4,
@@ -81,8 +92,16 @@ class PersonalDetailsScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 12),
-                      "Muhammad".text.fontFamily(bold).size(17).make(),
-                      "muhammad@example.com".text.fontFamily(medium).color(fontGrey).make(),
+                      "${profileProvider.locateUser.appUser.userName}"
+                          .text
+                          .fontFamily(bold)
+                          .size(17)
+                          .make(),
+                      "${profileProvider.locateUser.appUser.userEmail}"
+                          .text
+                          .fontFamily(medium)
+                          .color(fontGrey)
+                          .make(),
                     ],
                   ),
                 ),
@@ -100,10 +119,14 @@ class PersonalDetailsScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  buildDetailRow("Full Name", "Muhammad", screenWidth, screenHeight),
-                  buildDetailRow("Email", "muhammad@example.com", screenWidth, screenHeight),
-                  buildDetailRow("Phone", "+966 123456789", screenWidth, screenHeight),
-                  buildDetailRow("Address", "Riyadh, Saudi Arabia", screenWidth, screenHeight),
+                  buildDetailRow("Full Name", "${profileProvider.locateUser.appUser.userName}",
+                      screenWidth, screenHeight),
+                  buildDetailRow("Email", "${profileProvider.locateUser.appUser.userEmail}",
+                      screenWidth, screenHeight),
+                  buildDetailRow("Phone", profileProvider.locateUser.appUser.phoneNo ?? "N/A",
+                      screenWidth, screenHeight),
+                  buildDetailRow("Address", profileProvider.locateUser.appUser.address ?? "N/A", screenWidth,
+                      screenHeight),
                 ],
               ),
             ),
@@ -113,7 +136,8 @@ class PersonalDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildDetailRow(String label, String value, double screenWidth, double screenHeight) {
+  Widget buildDetailRow(
+      String label, String value, double screenWidth, double screenHeight) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
@@ -145,4 +169,3 @@ class PersonalDetailsScreen extends StatelessWidget {
     );
   }
 }
-

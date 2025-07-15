@@ -116,6 +116,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                             ),
                             (screenHeight * 0.02).heightBox,
+                            CustomTextField(
+                              hintText: 'Phone.No',
+                              preFixIcon: Icon(Icons.phone),
+                              textInputAction: TextInputAction.next,
+                              onChanged: (value) {
+                                model.appUser.phoneNo = value;
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return '  Please enter phone.no';
+                                }
+                                return null;
+                              },
+                            ),
+                            (screenHeight * 0.02).heightBox,
 
                             CustomTextField(
                               hintText: 'Password',

@@ -1,8 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../core/locator.dart';
+import '../../core/models/app_user.dart';
+import '../../core/services/auth_services.dart';
 
 class HomeProvider extends ChangeNotifier {
   bool isLoading = true;
+  AppUser? appUser ;
+  AuthServices authServices = AuthServices();
+  AuthServices locateUser = locator<AuthServices>();
 
   HomeProvider() {
     fetchAds();
@@ -61,5 +67,13 @@ class HomeProvider extends ChangeNotifier {
   List<Map<String, dynamic>> getAdsForCategory(String category) {
     print(category);
     return _adsByCategory[category] ?? [];
+  }
+
+  init()async{
+    print("INIT Called.......>>>>>>>>>");
+    locateUser = locator<AuthServices>();
+    await locateUser.init();
+    appUser = await locateUser.appUser;
+    notifyListeners();
   }
 }

@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'package:tijara/views/home_screen/home_provider.dart';
 import 'package:tijara/views/post_ad_Screen/post_ad_provider.dart';
+import 'package:tijara/views/profile_screens/profile_provider.dart';
 import 'package:tijara/views/splash_screen/splash_screen.dart';
 import 'core/locator.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => PostAdProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
