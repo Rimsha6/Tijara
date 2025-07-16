@@ -5,6 +5,7 @@ import 'package:velocity_x/velocity_x.dart';
 import '../core/consts/styles.dart';
 import '../core/models/post_ad_model.dart';
 import '../views/search_result_screen/ad_detail_screen.dart';
+import 'fav_button.dart';
 class EachCategory extends StatelessWidget {
   final String categoryTitle;
   final List<Map<String, dynamic>> ads;
@@ -42,6 +43,7 @@ class AdCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String? adId = ad.adId;
     final String image = ad.imageUrl ?? '';
     final String title = ad.productName ?? 'No Title';
     final String price = ad.productPrice ?? 'N/A';
@@ -89,23 +91,31 @@ class AdCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'bold',
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.only(top: 3.0, left: 8.0, bottom: 8.0),
-              child: Text(
-                price,
-                style: const TextStyle(fontSize: 13, fontFamily: 'bold'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'bold',
+                        ),
+                      ),
+                      Text(
+                        price,
+                        style: const TextStyle(fontSize: 13, fontFamily: 'bold'),
+                      ),
+                    ],
+                  ),
+                  FavoriteButton(adId: adId.toString(),),
+                ],
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(

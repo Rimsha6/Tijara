@@ -10,6 +10,8 @@ class AppUser extends ChangeNotifier {
   bool? isFirstLogin;
   String? createdAt;
   String? password;
+  List<String>? favAdList = [];
+
 
   AppUser({
     this.appUserId,
@@ -20,6 +22,7 @@ class AppUser extends ChangeNotifier {
     this.isFirstLogin,
     this.createdAt,
     this.password,
+    this.favAdList,
   });
 
   AppUser.fromJson(json, id) {
@@ -30,6 +33,9 @@ class AppUser extends ChangeNotifier {
     address = json['address'] ?? 'N/A';
     isFirstLogin = json['isFirstLogin'];
     createdAt = json['createdAt'];
+    favAdList = json['favAdList'] != null
+        ? List<String>.from(json['favAdList'])
+        : [];
   }
 
   toJson() {
@@ -41,6 +47,7 @@ class AppUser extends ChangeNotifier {
       'address': address,
       'isFirstLogin': isFirstLogin,
       'createdAt': createdAt,
+      'favAdList': favAdList,
     };
   }
 }

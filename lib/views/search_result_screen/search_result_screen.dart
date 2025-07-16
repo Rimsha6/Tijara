@@ -11,7 +11,6 @@ import '../../core/models/ad.dart';
 import '../../core/models/post_ad_model.dart';
 import '../../widgets/customt_textfield.dart';
 import '../../widgets/each_ad_tile.dart';
-import '../../widgets/location_dropdown.dart';
 import '../home_screen/home_provider.dart';
 import 'ad_detail_screen.dart';
 

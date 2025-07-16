@@ -3,6 +3,7 @@ import 'package:tijara/core/consts/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../core/consts/styles.dart';
 import '../core/models/post_ad_model.dart';
+import 'fav_button.dart';
 
 class EachAdTile extends StatelessWidget {
   final PostAdModel ad;
@@ -95,11 +96,11 @@ class EachAdTile extends StatelessWidget {
           ),
         ),
 
-        // Favorite Icon
-        const Positioned(
+        /// Favorite Button
+         Positioned(
           top: 18,
           right: 10,
-          child: Icon(Icons.favorite_border, color: Colors.grey),
+          child: FavoriteButton(adId: ad.adId.toString()),
         ),
       ],
     );
