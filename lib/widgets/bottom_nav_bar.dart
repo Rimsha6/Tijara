@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../core/consts/colors.dart';
 import 'package:get/get.dart';
-import '../views/chat_screen/chat_screen.dart';
+import '../views/chat_screen/inbox_screen.dart';
 import '../views/favourite_screen/favourite_screen.dart';
 import '../views/home_screen/home_provider.dart';
 import '../views/home_screen/home_screen.dart';
@@ -41,7 +41,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         Get.offAll(() => FavouriteScreen());
         break;
       case 3:
-        Get.offAll(() => ChatScreen());
+        Get.offAll(() => InboxScreen());
         break;
       case 4:
         Get.offAll(() => ProfileScreen());

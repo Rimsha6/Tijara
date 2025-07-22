@@ -18,7 +18,6 @@ class AuthServices {
     print("Init called");
     user = authInstant.currentUser;
     print("Firebase User: ${user?.uid}");
-
     if (user != null) {
       try {
         appUser = await databaseServices.getUser(user!.uid);
@@ -62,8 +61,8 @@ class AuthServices {
       customAuthResult.errorMessage = _handleFirebaseException(e);
       _showErrorSnackbar("Signup Error", customAuthResult.errorMessage!);
     } catch (e) {
-      customAuthResult
-          .errorMessage = AuthExceptionsMessages.generateExceptionMessage(e);
+      customAuthResult.errorMessage =
+          AuthExceptionsMessages.generateExceptionMessage(e);
       _showErrorSnackbar("Signup Error", customAuthResult.errorMessage!);
     }
 
@@ -97,15 +96,15 @@ class AuthServices {
       customAuthResult.errorMessage = _handleFirebaseException(e);
       _showErrorSnackbar("Login Error", customAuthResult.errorMessage!);
     } catch (e) {
-      customAuthResult
-          .errorMessage = AuthExceptionsMessages.generateExceptionMessage(e);
+      customAuthResult.errorMessage =
+          AuthExceptionsMessages.generateExceptionMessage(e);
       _showErrorSnackbar("Login Error", customAuthResult.errorMessage!);
     }
 
     return customAuthResult;
   }
 
-  /// Centralized FirebaseAuthException handler
+  /// Centralized FirebaseAuthException handler >>>>
   String _handleFirebaseException(FirebaseAuthException e) {
     print('FirebaseAuthException: ${e.code}');
     switch (e.code) {
@@ -126,7 +125,7 @@ class AuthServices {
     }
   }
 
-  /// Centralized error snackbar
+  /// Centralized error snackbar >>>>
   void _showErrorSnackbar(String title, String message) {
     Get.snackbar(
       title,

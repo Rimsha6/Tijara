@@ -111,6 +111,8 @@ class AdCard extends StatelessWidget {
                       ),
                     ],
                   ),
+
+                  /// Add to fav button >>>>>>>>>>
                   FavoriteButton(adId: adId.toString(),),
                 ],
               ),

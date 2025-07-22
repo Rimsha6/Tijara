@@ -29,7 +29,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   }
 
   void toggleFavorite() async {
-    await context.read<HomeProvider>().toggleFavoriteBook(widget.adId);
+    await context.read<HomeProvider>().toggleFavoriteAd(widget.adId);
     setState(() {
       isFavorite = !isFavorite;
     });

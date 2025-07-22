@@ -128,15 +128,14 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         EachCategory(
                           categoryTitle: "Mobiles and Tablets",
-                          ads: homeProvider
-                              .getAdsForCategory('Mobiles'),
+                          ads: homeProvider.getAdsForCategory('Mobiles'),
                         ),
                         EachCategory(
                           categoryTitle: "Furniture",
                           ads: homeProvider.getAdsForCategory("Furniture"),
                         ),
                       ],
-                 ),
+                    ),
             ],
           ),
         ),

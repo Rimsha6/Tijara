@@ -14,10 +14,19 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../core/consts/colors.dart';
 import '../../core/consts/styles.dart';
 import '../home_screen/home_screen.dart';
+import '../select_location/select_location.dart';
 
-class PostAdScreen extends StatelessWidget {
+class PostAdScreen extends StatefulWidget {
   const PostAdScreen({super.key});
 
+  @override
+  State<PostAdScreen> createState() => _PostAdScreenState();
+}
+
+class _PostAdScreenState extends State<PostAdScreen> {
+  String? pickUpAddress;
+  double? pickLatitude;
+  double? pickLongitude;
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<PostAdProvider>(context);
@@ -125,42 +134,44 @@ class PostAdScreen extends StatelessWidget {
                 const SizedBox(height: 5),
                 GestureDetector(
                   onTap: () async {
-                    final result = await Navigator.push(
+                    final Map<String, dynamic>? result = await Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => const MapPickerScreen()),
+                        builder: (context) => const SelectLocationScreen(
+                        ),
+                      ),
                     );
 
                     if (result != null) {
-                      model.setFullLocation(
-                        result['address'],
-                        result['lat'],
-                        result['lng'],
-                      );
+                      setState(() {
+                        pickUpAddress = result["address"];
+                        pickLatitude = result["latitude"];
+                        pickLongitude = result["longitude"];
+                        model.postAdModel.location = pickUpAddress;
+                      });
                     }
                   },
                   child: Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     decoration: BoxDecoration(
-                      color: lightGrey,
+                      color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on_outlined,
-                            color: Colors.green),
+                        const Icon(Icons.location_on_outlined, color: Colors.green),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            model.postAdModel.location?.isNotEmpty == true
-                                ? model.postAdModel.location!
+                            (pickUpAddress?.isNotEmpty == true)
+                                ? pickUpAddress!
                                 : "Select Location from Map",
-                            style: const TextStyle(
+                            style:  TextStyle(
                               fontFamily: 'medium',
-                              color: Colors.grey,
+                              color:  (pickUpAddress?.isNotEmpty == true)
+                                  ? Colors.black : Colors.grey,
                             ),
                           ),
                         ),

@@ -65,7 +65,6 @@ class ProfileProvider with ChangeNotifier {
         backgroundColor: Colors.orange,
         colorText: Colors.white,
       );
-
       return;
     }
     try {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapPickerScreen extends StatefulWidget {
   const MapPickerScreen({super.key});
@@ -13,26 +14,96 @@ class _MapPickerScreenState extends State<MapPickerScreen> {
   LatLng? selectedLocation;
   String selectedAddress = '';
   GoogleMapController? mapController;
+  CameraPosition? initialCameraPosition;
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserLocation();
+  }
+
+  Future<void> _getUserLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if location services are enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Location services are disabled.")),
+      );
+      return;
+    }
+
+    // Request location permission
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Location permission denied permanently.")),
+      );
+      return;
+    }
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Location permission denied.")),
+        );
+        return;
+      }
+    }
+
+    // Get current position
+    Position position = await Geolocator.getCurrentPosition();
+    LatLng currentLatLng = LatLng(position.latitude, position.longitude);
+
+    setState(() {
+      initialCameraPosition = CameraPosition(target: currentLatLng, zoom: 14);
+    });
+  }
 
   void _onMapTap(LatLng position) async {
     setState(() {
       selectedLocation = position;
+      selectedAddress = "Getting address...";
     });
 
-    /// Get address from lat/lng
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
-    );
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude,
+      );
 
-    if (placemarks.isNotEmpty) {
-      Placemark place = placemarks.first;
+      if (placemarks.isNotEmpty) {
+        testReverseGeocoding();
+        Placemark place = placemarks.first;
+        setState(() {
+          selectedAddress =
+          "${place.name}, ${place.street}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
+        });
+      } else {
+        setState(() {
+          selectedAddress = "Address not found.";
+        });
+      }
+    } catch (e) {
+      print("Reverse geocoding error: $e");
       setState(() {
-        selectedAddress =
-            "${place.name}, ${place.locality}, ${place.administrativeArea}";
+        selectedAddress = "Address fetch failed.";
       });
     }
   }
+  void testReverseGeocoding() async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(33.6844, 73.0479);
+      print("???????????????????$placemarks");
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
 
   void _confirmLocation() {
     if (selectedLocation != null) {
@@ -40,7 +111,7 @@ class _MapPickerScreenState extends State<MapPickerScreen> {
         'lat': selectedLocation!.latitude,
         'lng': selectedLocation!.longitude,
         'address':
-            selectedAddress.isNotEmpty ? selectedAddress : "Selected Location",
+        selectedAddress.isNotEmpty ? selectedAddress : "Selected Location",
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -57,22 +128,23 @@ class _MapPickerScreenState extends State<MapPickerScreen> {
         title: const Text("Pick Location"),
         backgroundColor: Colors.green,
       ),
-      body: Stack(
+      body: initialCameraPosition == null
+          ? const Center(child: CircularProgressIndicator())
+          : Stack(
         children: [
           GoogleMap(
             onMapCreated: (controller) => mapController = controller,
-            initialCameraPosition: const CameraPosition(
-              target: LatLng(33.6844, 73.0479), // Pakistan center
-              zoom: 12,
-            ),
+            initialCameraPosition: initialCameraPosition!,
             onTap: _onMapTap,
+            myLocationEnabled: true,
+            myLocationButtonEnabled: true,
             markers: selectedLocation != null
                 ? {
-                    Marker(
-                      markerId: const MarkerId('selected'),
-                      position: selectedLocation!,
-                    )
-                  }
+              Marker(
+                markerId: const MarkerId('selected'),
+                position: selectedLocation!,
+              )
+            }
                 : {},
           ),
           if (selectedAddress.isNotEmpty)
@@ -86,7 +158,8 @@ class _MapPickerScreenState extends State<MapPickerScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     selectedAddress,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                 ),
               ),

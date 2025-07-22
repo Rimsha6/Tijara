@@ -11,6 +11,8 @@ class PostAdProvider extends ChangeNotifier {
   final locateUser = locator<AuthServices>();
   final PostAdModel _postAdModel = PostAdModel();
   final DatabaseServices _databaseServices = DatabaseServices();
+
+
   bool isLoading = false;
   bool isTermsAccepted = false;
   File? selectedImage;

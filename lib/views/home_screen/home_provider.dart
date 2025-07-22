@@ -12,9 +12,11 @@ class HomeProvider extends ChangeNotifier {
   bool isLoading = true;
   AppUser? appUser;
 
+  /// CONSTRUCTOR >>
   HomeProvider() {
     fetchAds();
   }
+
   final List<String> categories = [
     "Vehicles",
     "Bikes",
@@ -35,6 +37,7 @@ class HomeProvider extends ChangeNotifier {
 
   Map<String, List<Map<String, dynamic>>> get adsByCategory => _adsByCategory;
 
+  /// FETCH ADS FUNCTION  >>>>>>>
   Future<void> fetchAds() async {
     isLoading = true;
     notifyListeners();
@@ -44,11 +47,9 @@ class HomeProvider extends ChangeNotifier {
           .collection('PostAds')
           .orderBy('createdAt', descending: true)
           .get();
-
       for (var doc in snapshot.docs) {
         final data = doc.data();
         final category = data['category'];
-
         if (category != null && categories.contains(category)) {
           if (!_adsByCategory.containsKey(category)) {
             _adsByCategory[category] = [];
@@ -59,7 +60,6 @@ class HomeProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('Error fetching ads: $e');
     }
-
     isLoading = false;
     notifyListeners();
   }
@@ -69,8 +69,9 @@ class HomeProvider extends ChangeNotifier {
     return _adsByCategory[category] ?? [];
   }
 
+  /// INIT FUNCTION >>>
   init() async {
-    print("INIT Called.......>>>>>>>>>");
+    print("Init Called.......>>>>>>>>>");
     locateUser = locator<AuthServices>();
     await locateUser.init();
     appUser = await locateUser.appUser;
@@ -87,6 +88,7 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
+  /// GET FAVORITE AD LIST >>>>>>>>>>
   Future<List<String>> getFavAdList() async {
     try {
       /// Ensure currentUserId is correctly retrieved
@@ -121,7 +123,8 @@ class HomeProvider extends ChangeNotifier {
     return [];
   }
 
-  Future<void> toggleFavoriteBook(String adId) async {
+  /// ADD TO FAVORITE TOGGLE BUTTON >>>>>>>>>>
+  Future<void> toggleFavoriteAd(String adId) async {
     try {
       DocumentReference userDoc =
           _firestore.collection('AppUser').doc(locateUser.appUser.appUserId);
@@ -146,6 +149,7 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
+  /// GET FAVORITE DATA >>>>>>>>>>
   Future<List<Map<String, dynamic>>> getFavUsersData(
       List<String> favUserList) async {
     List<Map<String, dynamic>> favAdsData = [];
@@ -154,7 +158,6 @@ class HomeProvider extends ChangeNotifier {
         print("Favorite user list is empty.");
         return [];
       }
-
       for (String adId in favUserList) {
         print("Fetching ad with Id: $adId");
         DocumentSnapshot bookDoc = await FirebaseFirestore.instance
@@ -163,14 +166,12 @@ class HomeProvider extends ChangeNotifier {
             .get();
 
         if (bookDoc.exists) {
-          Map<String, dynamic> adData =
-          bookDoc.data() as Map<String, dynamic>;
+          Map<String, dynamic> adData = bookDoc.data() as Map<String, dynamic>;
           favAdsData.add(adData);
         } else {
           print("No ad found for ID: $adId");
         }
       }
-
       print("Fetched Favorite ad: $favAdsData");
       return favAdsData;
     } catch (e) {

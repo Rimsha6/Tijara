@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tijara/core/consts/colors.dart';
 import 'package:tijara/core/consts/styles.dart';
 import 'package:tijara/widgets/custom_button.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../core/models/post_ad_model.dart';
+import '../chat_screen/chat_screen.dart';
+import '../home_screen/home_provider.dart';
 
 class AdDetailScreen extends StatelessWidget {
   final PostAdModel ad;
 
-  const AdDetailScreen({required this.ad, Key? key}) : super(key: key);
+  const AdDetailScreen({required this.ad, super.key});
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final homeProvider = Provider.of<HomeProvider>(context);
 
     final String title = ad.productName ?? 'No Title';
     final String price = ad.productPrice ?? 'N/A';
@@ -44,16 +48,17 @@ class AdDetailScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: imageUrl.isNotEmpty
                   ? Image.network(
-                imageUrl,
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              )
+                      imageUrl,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
                   : Container(
-                height: 200,
-                color: Colors.grey.shade300,
-                child: const Center(child: Icon(Icons.image_not_supported)),
-              ),
+                      height: 200,
+                      color: Colors.grey.shade300,
+                      child:
+                          const Center(child: Icon(Icons.image_not_supported)),
+                    ),
             ),
             const SizedBox(height: 16),
             Padding(
@@ -63,13 +68,21 @@ class AdDetailScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      "Category: ".text.fontFamily(medium).color(Colors.grey.shade600).make(),
-                      category.text.fontFamily(medium).color(darkFontGrey).make(),
+                      "Category: "
+                          .text
+                          .fontFamily(medium)
+                          .color(Colors.grey.shade600)
+                          .make(),
+                      category.text
+                          .fontFamily(medium)
+                          .color(darkFontGrey)
+                          .make(),
                     ],
                   ),
                   Row(
                     children: [
-                      const Icon(Icons.remove_red_eye, size: 16, color: Colors.grey),
+                      const Icon(Icons.remove_red_eye,
+                          size: 16, color: Colors.grey),
                       const SizedBox(width: 4),
                       "$views".text.size(14).make(),
                     ],
@@ -91,7 +104,8 @@ class AdDetailScreen extends StatelessWidget {
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 18, color: Colors.grey),
+                      const Icon(Icons.location_on,
+                          size: 18, color: Colors.grey),
                       const SizedBox(width: 4),
                       location.text.color(Colors.grey).size(14).make(),
                     ],
@@ -138,7 +152,10 @@ class AdDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Image.asset("Assets/images/maps.jpeg", height: screenHeight * 0.20, width: screenWidth, fit: BoxFit.cover),
+            Image.asset("Assets/images/maps.jpeg",
+                height: screenHeight * 0.20,
+                width: screenWidth,
+                fit: BoxFit.cover),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -153,15 +170,26 @@ class AdDetailScreen extends StatelessWidget {
               padding: const EdgeInsets.all(14),
               child: Row(
                 children: [
-                  const CircleAvatar(radius: 30, backgroundImage: AssetImage("Assets/images/profile_img.jpeg")),
+                  const CircleAvatar(
+                      radius: 30,
+                      backgroundImage:
+                          AssetImage("Assets/images/profile_img.jpeg")),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         userName.text.color(green).fontFamily(medium).make(),
-                        "User ID: $userId".text.color(Colors.grey.shade600).fontFamily(medium).make(),
-                        "Ad ID: $adId".text.color(Colors.grey.shade600).fontFamily(medium).make(),
+                        "User ID: $userId"
+                            .text
+                            .color(Colors.grey.shade600)
+                            .fontFamily(medium)
+                            .make(),
+                        "Ad ID: $adId"
+                            .text
+                            .color(Colors.grey.shade600)
+                            .fontFamily(medium)
+                            .make(),
                       ],
                     ),
                   ),
@@ -169,30 +197,42 @@ class AdDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  customButton(
-                    width: screenWidth * 0.44,
-                    height: screenHeight * 0.05,
-                    title: "Message Seller",
-                    color: green,
-                    textColor: white,
-                    onPressed: () {},
+            homeProvider.locateUser.appUser.appUserId == userId
+                ? SizedBox()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        customButton(
+                          width: screenWidth * 0.44,
+                          height: screenHeight * 0.05,
+                          title: "Message Seller",
+                          color: green,
+                          textColor: white,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ChatScreen(
+                                  userId: userId,
+                                  userName: userName,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        customButton(
+                          width: screenWidth * 0.44,
+                          height: screenHeight * 0.05,
+                          title: "Call Seller",
+                          color: green,
+                          textColor: white,
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
                   ),
-                  customButton(
-                    width: screenWidth * 0.44,
-                    height: screenHeight * 0.05,
-                    title: "Call Seller",
-                    color: green,
-                    textColor: white,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 20),
           ],
         ),
